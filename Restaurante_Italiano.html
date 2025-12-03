@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Italia - Restaurante Italiano</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts para fonte elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #8B4513; /* Terracota */
+            margin-bottom: 2rem;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-custom {
+            background-color: #DAA520; /* Dourado */
+            border-color: #DAA520;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #B8860B;
+            border-color: #B8860B;
+        }
+        footer {
+            background-color: #2F4F4F; /* Cinza escuro */
+            color: white;
+            padding: 2rem 0;
+        }
+        .navbar {
+            background-color: #8B4513; /* Terracota */
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .nav-link:hover {
+            color: #DAA520 !important;
+        }
+        .btn-login {
+            background-color: #DAA520;
+            border-color: #DAA520;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .btn-login:hover {
+            background-color: #B8860B;
+            border-color: #B8860B;
+        }
+        .login-page {
+            display: none;
+        }
+        .landing-page {
+            display: none;
+        }
+        .alert-experimental {
+            display: none;
+        }
+        /* Estilos para os nav-tabs no login */
+        .nav-tabs .nav-link {
+            color: #000 !important;
+        }
+        .nav-tabs .nav-link.active {
+            color: #000 !important;
+            background-color: #f8f9fa !important;
+            border-color: #dee2e6 #dee2e6 #fff !important;
+        }
+        .nav-tabs .nav-link:hover {
+            color: #000 !important;
+            border-color: #dee2e6 #dee2e6 #fff !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="login-page">
+        <section class="hero">
+            <div class="container text-center">
+                <h1>Bem-vindo ao Bella Italia</h1>
+                <p class="lead">Faça login ou crie sua conta para acessar nossos serviços.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="loginTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Entrar</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" aria-controls="signup" aria-selected="false">Criar Conta</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="loginTabContent">
+                                    <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                                        <form id="loginForm" class="mt-3">
+                                            <div class="mb-3">
+                                                <label for="loginEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="loginEmail" placeholder="seuemail@exemplo.com" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="loginPassword" class="form-label">Senha</label>
+                                                <input type="password" class="form-control" id="loginPassword" placeholder="Sua senha" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-custom w-100">Entrar</button>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                                        <form id="signupForm" class="mt-3">
+                                            <div class="mb-3">
+                                                <label for="signupName" class="form-label">Nome</label>
+                                                <input type="text" class="form-control" id="signupName" placeholder="Seu nome" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="signupEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="signupEmail" placeholder="seuemail@exemplo.com" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="signupPassword" class="form-label">Senha</label>
+                                                <input type="password" class="form-control" id="signupPassword" placeholder="Sua senha" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-custom w-100">Criar Conta</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <button class="btn btn-login me-3" data-bs-toggle="modal" data-bs-target="#loginModal" title="Entrar ou Criar Conta">
+                    <i class="bi bi-person"></i>
+                </button>
+                <a class="navbar-brand" href="#">Bella Italia</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pratos">Pratos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Alert Experimental -->
+        <div id="alertExperimental" class="alert alert-warning alert-experimental text-center" role="alert">
+            Você está no modo experimental. Crie uma conta para acessar todos os recursos.
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container text-center">
+                <h1>Bem-vindo ao Bella Italia</h1>
+                <p class="lead">Sabores autênticos da Itália em um ambiente refinado.</p>
+                <a href="#pratos" class="btn btn-custom btn-lg">Veja Nossos Pratos</a>
+            </div>
+        </section>
+
+        <!-- Pratos Principais -->
+        <section id="pratos" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Pratos Principais</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top" alt="Pizza Margherita">
+                            <div class="card-body">
+                                <h5 class="card-title">Pizza Margherita</h5>
+                                <p class="card-text">Clássica pizza italiana com molho de tomate, mozzarella fresca e manjericão.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top" alt="Spaghetti Carbonara">
+                            <div class="card-body">
+                                <h5 class="card-title">Spaghetti Carbonara</h5>
+                                <p class="card-text">Massa com ovos, queijo pecorino, pancetta e pimenta preta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top" alt="Risotto Funghi">
+                            <div class="card-body">
+                                <h5 class="card-title">Risotto Funghi</h5>
+                                <p class="card-text">Arroz arbóreo cremoso com cogumelos frescos e parmesão.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Nossos Serviços</h2>
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4">
+                        <h5>Reservas</h5>
+                        <p>Reserve sua mesa com antecedência para uma experiência perfeita.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <h5>Delivery</h5>
+                        <p>Entregamos seus pratos favoritos diretamente na sua porta.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-4">
+                        <h5>Eventos</h5>
+                        <p>Organizamos jantares especiais, aniversários e eventos corporativos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contato">
+            <div class="container text-center">
+                <h5>Contato</h5>
+                <p>Endereço: Rua das Oliveiras, 123 - Centro, Cidade</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Email: contato@bellaitalia.com</p>
+                <p>Horário: Terça a Domingo, 18h às 23h</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal de Login/Criar Conta (para quando logado) -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Acesse sua Conta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Você já está logado. Deseja sair?</p>
+                    <button id="logoutBtn" class="btn btn-danger">Sair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para obter usuários do localStorage
+        function getUsers() {
+            const users = localStorage.getItem('users');
+            return users ? JSON.parse(users) : {};
+        }
+
+        // Função para salvar usuários no localStorage
+        function saveUsers(users) {
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // Verificar se está logado
+        function isLoggedIn() {
+            return localStorage.getItem('loggedIn') === 'true';
+        }
+
+        // Mostrar página de login
+        function showLoginPage() {
+            document.getElementById('loginPage').style.display = 'block';
+            document.getElementById('landingPage').style.display = 'none';
+        }
+
+        // Mostrar landing page
+        function showLandingPage(experimental = false) {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('landingPage').style.display = 'block';
+            if (experimental) {
+                document.getElementById('alertExperimental').style.display = 'block';
+            } else {
+                document.getElementById('alertExperimental').style.display = 'none';
+            }
+        }
+
+        // Inicializar
+        if (isLoggedIn()) {
+            showLandingPage();
+        } else {
+            showLoginPage();
+        }
+
+        // Formulário de criação de conta
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+
+            const users = getUsers();
+            if (users[email]) {
+                alert('Usuário já existe!');
+                return;
+            }
+            users[email] = { name, password };
+            saveUsers(users);
+            alert('Conta criada com sucesso!');
+            // Limpar formulário
+            this.reset();
+        });
+
+        // Formulário de login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = getUsers();
+            if (users[email] && users[email].password === password) {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('currentUser', email);
+                showLandingPage();
+            } else {
+                showLandingPage(true); // Modo experimental
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('currentUser');
+            showLoginPage();
+            // Fechar modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            modal.hide();
+        });
+    </script>
+</body>
+</html>
