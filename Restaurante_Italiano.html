@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bella Italia - Restaurante Italiano</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Google Fonts para fonte elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
@@ -85,7 +82,6 @@
         .alert-experimental {
             display: none;
         }
-        /* Estilos para os nav-tabs no login */
         .nav-tabs .nav-link {
             color: #000 !important;
         }
@@ -102,7 +98,6 @@
 </head>
 <body>
 
-    <!-- Login Page -->
     <div id="loginPage" class="login-page">
         <section class="hero">
             <div class="container text-center">
@@ -160,9 +155,7 @@
         </section>
     </div>
 
-    <!-- Landing Page -->
     <div id="landingPage" class="landing-page">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <button class="btn btn-login me-3" data-bs-toggle="modal" data-bs-target="#loginModal" title="Entrar ou Criar Conta">
@@ -188,12 +181,10 @@
             </div>
         </nav>
 
-        <!-- Alert Experimental -->
         <div id="alertExperimental" class="alert alert-warning alert-experimental text-center" role="alert">
             Você está no modo experimental. Crie uma conta para acessar todos os recursos.
         </div>
 
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container text-center">
                 <h1>Bem-vindo ao Bella Italia</h1>
@@ -202,7 +193,6 @@
             </div>
         </section>
 
-        <!-- Pratos Principais -->
         <section id="pratos" class="py-5">
             <div class="container">
                 <h2 class="section-title text-center">Pratos Principais</h2>
@@ -238,7 +228,6 @@
             </div>
         </section>
 
-        <!-- Serviços -->
         <section id="servicos" class="py-5 bg-light">
             <div class="container">
                 <h2 class="section-title text-center">Nossos Serviços</h2>
@@ -259,7 +248,6 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer id="contato">
             <div class="container text-center">
                 <h5>Contato</h5>
@@ -271,7 +259,6 @@
         </footer>
     </div>
 
-    <!-- Modal de Login/Criar Conta (para quando logado) -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -286,33 +273,28 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Função para obter usuários do localStorage
         function getUsers() {
             const users = localStorage.getItem('users');
             return users ? JSON.parse(users) : {};
         }
 
-        // Função para salvar usuários no localStorage
         function saveUsers(users) {
             localStorage.setItem('users', JSON.stringify(users));
         }
 
-        // Verificar se está logado
         function isLoggedIn() {
             return localStorage.getItem('loggedIn') === 'true';
         }
 
-        // Mostrar página de login
+        
         function showLoginPage() {
             document.getElementById('loginPage').style.display = 'block';
             document.getElementById('landingPage').style.display = 'none';
         }
 
-        // Mostrar landing page
+        
         function showLandingPage(experimental = false) {
             document.getElementById('loginPage').style.display = 'none';
             document.getElementById('landingPage').style.display = 'block';
@@ -322,15 +304,12 @@
                 document.getElementById('alertExperimental').style.display = 'none';
             }
         }
-
-        // Inicializar
         if (isLoggedIn()) {
             showLandingPage();
         } else {
             showLoginPage();
         }
 
-        // Formulário de criação de conta
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('signupName').value;
@@ -345,11 +324,9 @@
             users[email] = { name, password };
             saveUsers(users);
             alert('Conta criada com sucesso!');
-            // Limpar formulário
             this.reset();
         });
 
-        // Formulário de login
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -361,16 +338,15 @@
                 localStorage.setItem('currentUser', email);
                 showLandingPage();
             } else {
-                showLandingPage(true); // Modo experimental
+                showLandingPage(true); 
             }
         });
 
-        // Logout
+
         document.getElementById('logoutBtn').addEventListener('click', function() {
             localStorage.removeItem('loggedIn');
             localStorage.removeItem('currentUser');
             showLoginPage();
-            // Fechar modal
             const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
             modal.hide();
         });
